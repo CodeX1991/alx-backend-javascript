@@ -4,9 +4,17 @@ export default function cleanSet(set, startString) {
   ) {
     return '';
   }
-  let filteredValues = [...set].filter((value) => value.startsWith(startString));
+  const subString = [];
 
-  filteredValues = filteredValues.map((value) => value.slice(startString.length));
+  for (const value of set.values()) {
+    if (typeof value === 'string' && value.startsWith(startString)) {
+      const subStr = value.slice(startString.length);
 
-  return filteredValues.join('-');
+      if (subStr && subStr !== value) {
+        subString.push(subStr);
+      }
+    }
+  }
+
+  return subString.join('-');
 }
