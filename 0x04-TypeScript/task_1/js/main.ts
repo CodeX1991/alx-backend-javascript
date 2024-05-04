@@ -35,3 +35,35 @@ const printTeacher: printTeacherFunction = (firstName, lastName) => {
 
 // Test Case printTeacher("John", "Doe") -> J. Doe
 console.log(printTeacher("John", "Doe"));
+
+// Task4
+interface IsStudentClass {
+  firstName: string;
+  lastName: string;
+  workOnHomework(): string;
+  displayName(): string;
+}
+
+class StudentClass implements IsStudentClass {
+  firstName: string;
+  lastName: string;
+
+  constructor (firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+    return 'Currently working';
+  }
+
+  displayName(): string {
+    return `${this.firstName}`;
+  }
+}
+
+// Test case
+const student = new StudentClass("Murphy", "John");
+console.log(student.workOnHomework());
+console.log(student.displayName());
+
